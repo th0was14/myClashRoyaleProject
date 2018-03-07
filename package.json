@@ -1,0 +1,14 @@
+{
+  "name": "test-fake-api",
+  "version": "1.0.0",
+  "description": "test fake api on server-json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server-json"
+  ],
+  "author": "thomas caillard",
+  "license": "ISC"
+}
