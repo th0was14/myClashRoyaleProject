@@ -1,14 +1,33 @@
 {
-  "name": "test-fake-api",
-  "version": "1.0.0",
-  "description": "test fake api on server-json",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "server-json"
-  ],
-  "author": "thomas caillard",
-  "license": "ISC"
+    "name": "test-fake-api",
+    "version": "1.0.0",
+    "description": "test fake api on server-json",
+    "main": "src/index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "webpack --watch",
+        "start": "webpack-dev-server --open --mode development",
+        "build": "webpack --mode production",
+        "api": "json-server --watch db.json --port 3004"
+    },
+    "keywords": [
+        "server-json"
+    ],
+    "author": "thomas caillard",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/lodash": "^4.14.104",
+        "@types/rx": "^4.1.1",
+        "clean-webpack-plugin": "^0.1.19",
+        "html-webpack-plugin": "^3.0.6",
+        "ts-loader": "^4.0.1",
+        "typescript": "^2.7.2",
+        "webpack": "^4.1.1",
+        "webpack-cli": "^2.0.10",
+        "webpack-dev-server": "^3.1.0"
+    },
+    "dependencies": {
+        "lodash": "^4.17.5",
+        "rxjs": "^5.5.6"
+    }
 }
