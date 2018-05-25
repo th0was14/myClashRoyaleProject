@@ -4,3 +4,8 @@ export interface Post {
   author: string;
   test: string;
 }
+
+export interface Comment {
+  body: string;
+  postId: number;
+}

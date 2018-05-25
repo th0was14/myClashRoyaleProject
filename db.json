@@ -1,9 +1,35 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode", "test": "toto" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "peguet florian",
+      "test": "thomas CAILLARD"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "body": "switch",
+      "postId": 1,
+      "id": 2
+    },
+    {
+      "body": "switch deux",
+      "postId": 2,
+      "id": 3
+    },
+    {
+      "body": "switch trois",
+      "postId": 3,
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "typicode"
   }
+}

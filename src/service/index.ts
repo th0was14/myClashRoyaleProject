@@ -1,6 +1,18 @@
-export const servicePost = () => {
-    const apiUrl = "http://localhost:3004/";
+const apiUrl = "http://localhost:3004";
 
-    return fetch(`${apiUrl}posts/1`).then(response => response.json());
+export const postComment = (body: string, postId: number) =>
+  fetch(`${apiUrl}/comments/`, {
+    method: "post",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ body, postId })
+  }).then(res => res.json());
 
-}
+export const fetchByTypeAndId = (type: string, id?: number) => {
+  const fetchCall = id
+    ? fetch(`${apiUrl}/${type}/${id}`)
+    : fetch(`${apiUrl}/${type}`);
+  return fetchCall.then(response => response.json());
+};

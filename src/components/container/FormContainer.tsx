@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Input } from "../presentational/Input";
+import { postComment, fetchByTypeAndId } from "../../service/index";
 
 export class FormContainer extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export class FormContainer extends React.Component {
       seo_title: ""
     };
     this.handleChange = this.handleChange.bind(this);
+    this.addComment = this.addComment.bind(this);
   }
 
   public state: { seo_title: string };
@@ -17,6 +19,12 @@ export class FormContainer extends React.Component {
     this.setState({ [event.target.id]: event.target.value }, () =>
       console.log(this.state)
     );
+  };
+
+  addComment = event => {
+    fetchByTypeAndId("Comments").then(comments => {
+      postComment(this.state.seo_title, comments.length);
+    });
   };
 
   render() {
@@ -31,6 +39,9 @@ export class FormContainer extends React.Component {
           value={seo_title}
           handleChange={this.handleChange}
         />
+        <button type="button" onClick={this.addComment}>
+          habba baba
+        </button>
       </form>
     );
   }
