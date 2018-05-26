@@ -40,7 +40,7 @@ export class FormContainer extends React.Component {
           handleChange={this.handleChange}
         />
         <button type="button" onClick={this.addComment}>
-          habba baba
+          Update comment
         </button>
       </form>
     );
