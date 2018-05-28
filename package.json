@@ -40,7 +40,11 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
+    "@types/react-router": "^4.0.25",
+    "@types/react-router-dom": "^4.2.6",
     "popper.js": "^1.14.3",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "style-loader": "^0.21.0"
   }
 }
