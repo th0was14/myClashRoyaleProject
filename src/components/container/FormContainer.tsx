@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Input } from "../presentational/Input";
 import { postComment, fetchByTypeAndId } from "../../service/index";
+import { Button } from "reactstrap";
 
 export class FormContainer extends React.Component {
   constructor(props) {
@@ -39,9 +40,9 @@ export class FormContainer extends React.Component {
           value={seo_title}
           handleChange={this.handleChange}
         />
-        <button type="button" onClick={this.addComment}>
-          habba baba
-        </button>
+        <Button color="danger" onClick={this.addComment}>
+          Update comment!
+        </Button>
       </form>
     );
   }
