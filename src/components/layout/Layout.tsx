@@ -24,8 +24,8 @@ export class Layout extends React.Component {
     isOpen: false
   };
   private navLink: NavRoute[] = [
-    { label: "Home", path: "/", component: Home, exact: true },
-    { label: "Main", path: "/main", component: Main }
+    { id: "home", label: "Home", path: "/", component: Home, exact: true },
+    { id: "main", label: "Main", path: "/main", component: Main }
   ];
   constructor(props) {
     super(props);
@@ -39,8 +39,8 @@ export class Layout extends React.Component {
   };
 
   private displayLinks = (navRoutes: NavRoute[]) => {
-    return navRoutes.map(({ label, path, component, exact }) => (
-      <NavItem>
+    return navRoutes.map(({ id, label, path, component, exact }) => (
+      <NavItem key={id}>
         <LinkContainer to={path}>
           <Button color="link" onClick={this.toggle}>
             {label}
@@ -51,8 +51,8 @@ export class Layout extends React.Component {
   };
 
   private configRoutes = (navRoutes: NavRoute[]) => {
-    return navRoutes.map(({ path, component, exact }) => (
-      <Route exact={exact} path={path} component={component} />
+    return navRoutes.map(({ id, path, component, exact }) => (
+      <Route key={id} exact={exact} path={path} component={component} />
     ));
   };
 
