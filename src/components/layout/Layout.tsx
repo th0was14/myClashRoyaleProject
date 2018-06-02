@@ -15,8 +15,8 @@ import {
 } from "reactstrap";
 import { Route, BrowserRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { Home } from "./Home";
-import { Main } from "./Main";
+import { Home } from "../page/Home";
+import { Main } from "../page/Main";
 import { NavRoute } from "./typings";
 
 export class Layout extends React.Component {

@@ -8,11 +8,10 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "api": "json-server --watch db.json --port 3004"
+    "api": "json-server --watch db.json --port 3004",
+    "flow": "flow"
   },
-  "keywords": [
-    "server-json"
-  ],
+  "keywords": ["server-json"],
   "author": "thomas caillard",
   "license": "ISC",
   "devDependencies": {
@@ -43,6 +42,7 @@
     "@types/react-router": "^4.0.25",
     "@types/react-router-bootstrap": "^0.24.5",
     "@types/react-router-dom": "^4.2.6",
+    "flow-bin": "^0.73.0",
     "popper.js": "^1.14.3",
     "react-router": "^4.2.0",
     "react-router-bootstrap": "^0.24.4",
