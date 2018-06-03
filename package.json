@@ -11,7 +11,9 @@
     "api": "json-server --watch db.json --port 3004",
     "flow": "flow"
   },
-  "keywords": ["server-json"],
+  "keywords": [
+    "server-json"
+  ],
   "author": "thomas caillard",
   "license": "ISC",
   "devDependencies": {
@@ -26,7 +28,7 @@
     "html-webpack-plugin": "^3.0.6",
     "jquery": "^3.3.1",
     "json-server": "^0.12.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -42,11 +44,13 @@
     "@types/react-router": "^4.0.25",
     "@types/react-router-bootstrap": "^0.24.5",
     "@types/react-router-dom": "^4.2.6",
+    "axios": "^0.18.0",
     "flow-bin": "^0.73.0",
     "popper.js": "^1.14.3",
     "react-router": "^4.2.0",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
+    "react-toastify": "^4.0.1",
     "style-loader": "^0.21.0"
   }
 }

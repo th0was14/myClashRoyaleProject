@@ -15,9 +15,11 @@ import {
 } from "reactstrap";
 import { Route, BrowserRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import { Home } from "../page/Home";
 import { Main } from "../page/Main";
 import { NavRoute } from "./typings";
+import { PlayerClash } from "../page/PlayerClash";
 
 export class Layout extends React.Component {
   public state = {
@@ -25,7 +27,13 @@ export class Layout extends React.Component {
   };
   private navLink: NavRoute[] = [
     { id: "home", label: "Home", path: "/", component: Home, exact: true },
-    { id: "main", label: "Main", path: "/main", component: Main }
+    { id: "main", label: "Main", path: "/main", component: Main },
+    {
+      id: "player",
+      label: "Player Clash",
+      path: "/playerClash/:playerId",
+      component: PlayerClash
+    }
   ];
   constructor(props) {
     super(props);
@@ -70,6 +78,7 @@ export class Layout extends React.Component {
             </Collapse>
           </Navbar>
           <hr />
+          <ToastContainer />
           {this.configRoutes(this.navLink)}
         </div>
       </BrowserRouter>
