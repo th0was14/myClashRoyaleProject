@@ -6,7 +6,13 @@ import { PlayerInfo } from "./PlayerClash.typings";
 import { isEmpty } from "lodash";
 import { Jumbotron } from "reactstrap";
 
-export class PlayerClash extends React.Component {
+export interface PlayerProps {
+  playerInfo: PlayerInfo;
+}
+
+
+
+export class PlayerClash extends React.Component <PlayerProps> {
   private myId: string = "9GU0880R";
   public state: { playerInfo: PlayerInfo } = {
     playerInfo: {}
@@ -14,14 +20,14 @@ export class PlayerClash extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
-    fetchPlayerInfo("player", this.myId).subscribe(
-      (playerInfo: PlayerInfo) => {
-        this.setState({ playerInfo });
-      },
-      e => {
-        toast.error(e.toString());
-      }
-    );
+    // fetchPlayerInfo("player", this.myId).subscribe(
+    //   (playerInfo: PlayerInfo) => {
+    //     this.setState({ playerInfo });
+    //   },
+    //   e => {
+    //     toast.error(e.toString());
+    //   }
+    // );
   }
 
   render() {
