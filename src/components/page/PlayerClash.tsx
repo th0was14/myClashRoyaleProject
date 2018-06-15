@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { fetchPlayerInfo } from "../../service/royalApi";
 import { PlayerInfo } from "./PlayerClash.typings";
 import { isEmpty } from "lodash";
+import { Jumbotron } from "reactstrap";
 
 export class PlayerClash extends React.Component {
   private myId: string = "9GU0880R";
@@ -13,7 +14,7 @@ export class PlayerClash extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
-    fetchPlayerInfo<PlayerInfo>("player", this.myId).subscribe(
+    fetchPlayerInfo("player", this.myId).subscribe(
       (playerInfo: PlayerInfo) => {
         this.setState({ playerInfo });
       },
@@ -25,10 +26,21 @@ export class PlayerClash extends React.Component {
 
   render() {
     return (
-      <h1>
-        Hello, {this.state.playerInfo.name}, you have{" "}
-        {this.state.playerInfo.trophies} trophies
-      </h1>
+      <Jumbotron>
+        <h1 className="display-3">
+          Hello, {this.state.playerInfo.name} of clan{" "}
+          {this.state.playerInfo.clanName}!
+        </h1>
+        {/* <p className="lead">
+          This is a simple hero unit, a simple Jumbotron-style component for
+          calling extra attention to featured content or information.
+        </p>
+        <hr className="my-2" />
+        <p>
+          It uses utility classes for typgraphy and spacing to space content out
+          within the larger container.
+        </p> */}
+      </Jumbotron>
     );
   }
 }

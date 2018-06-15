@@ -1,5 +1,8 @@
 import { Observable } from "rx";
 import axios from "axios";
+import { mapperToPlayerInfo } from "./mapper";
+import { PlayerInfoDto } from "./typings";
+import { PlayerInfo } from "../../components/page/PlayerClash.typings";
 
 const baseUrl: string = "https://api.royaleapi.com";
 const myToken: string =
@@ -31,5 +34,8 @@ const fetchByTypeById = <T>(type: string, id: string): Observable<T> => {
   );
 };
 
-export const fetchPlayerInfo = <T>(type: string, id: string): Observable<T> =>
-  fetchByTypeById<T>(type, id);
+export const fetchPlayerInfo = (
+  type: string,
+  id: string
+): Observable<PlayerInfo> =>
+  fetchByTypeById<PlayerInfoDto>(type, id).map(mapperToPlayerInfo);
