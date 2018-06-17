@@ -4,12 +4,15 @@ import { fetchPlayerInfo } from "../../service/royalApi";
 
 function* fetchUser(action) {
   try {
-    const user = yield call(fetchPlayerInfo, "player", action.playerId);
-    yield put({ type: playerFetchActions.PLAYER_FETCH_SUCCEEDED, user: user });
+    const playerInfo = yield call(fetchPlayerInfo, "player", action.playerId);
+    yield put({
+      type: playerFetchActions.PLAYER_FETCH_SUCCEEDED,
+      payload: playerInfo
+    });
   } catch (e) {
     yield put({
       type: playerFetchActions.PLAYER_FETCH_FAILED,
-      message: e.message
+      payload: { message: e.message }
     });
   }
 }

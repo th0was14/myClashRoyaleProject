@@ -18,7 +18,7 @@ export const postComment = (body: string, postId: number) =>
     body: JSON.stringify({ body, postId })
   }).then(res => res.json());
 
-const fetchByTypeById = <T>(type: string, id: string): Observable<T> => {
+const fetchByTypeById = <T>(type: string, id: string): Promise<T> => {
   const fetchCall = axios.get(`${baseUrl}/${type}/${id}`, {
     method: "get",
     headers: {
@@ -27,15 +27,20 @@ const fetchByTypeById = <T>(type: string, id: string): Observable<T> => {
       "Content-Type": "application/json"
     }
   });
-  return Observable.fromPromise<T>(
-    fetchCall.then(response => response.data).catch(e => {
-      throw e;
-    })
-  );
+  return fetchCall.then(response => response.data).catch(e => {
+    throw e;
+  });
 };
+
+export const fetchPlayerInfoObservable = (
+  type: string,
+  id: string
+): Observable<PlayerInfo> =>
+  Observable.fromPromise<PlayerInfoDto>(fetchByTypeById(type, id)).map(
+    mapperToPlayerInfo
+  );
 
 export const fetchPlayerInfo = (
   type: string,
   id: string
-): Observable<PlayerInfo> =>
-  fetchByTypeById<PlayerInfoDto>(type, id).map(mapperToPlayerInfo);
+): Promise<PlayerInfo> => fetchByTypeById(type, id).then(mapperToPlayerInfo);

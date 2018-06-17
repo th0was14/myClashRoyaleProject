@@ -1,12 +1,23 @@
-import { royalState } from "./app.reducers";
+import { PlayerState } from "./app.reducers";
 import { playerFetchActions } from "../actions/typings";
 
-export const playerReducers = (state: royalState, action: any): royalState => {
+const initialState: PlayerState = {
+  playerInfo: {},
+  isFetching: false,
+  errorMessage: ""
+};
+
+export const playerReducers = (
+  state: PlayerState = initialState,
+  action: any
+): PlayerState => {
   switch (action.type) {
     case playerFetchActions.PLAYER_FETCH_SUCCEEDED: {
-      return { ...state, user: action.payload };
+      console.log("player reducer", state, action);
+      return { ...state, playerInfo: action.payload, isFetching: false };
     }
     case playerFetchActions.PLAYER_FETCH_REQUESTED: {
+      console.log("player reducer", state, action);
       return { ...state, isFetching: true };
     }
     case playerFetchActions.PLAYER_FETCH_FAILED: {

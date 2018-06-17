@@ -1,10 +1,15 @@
 import { combineReducers } from "redux";
 import { playerReducers } from "./player.reducers";
+import { PlayerInfo } from "../../components/page/PlayerClash.typings";
 
-export interface royalState {
-  user: string;
+export interface PlayerState {
+  playerInfo: PlayerInfo;
   isFetching: boolean;
   errorMessage: string;
 }
 
-export const appState = combineReducers({ playerReducers });
+export interface RoyalState {
+  player: PlayerState;
+}
+
+export const appState = combineReducers({ player: playerReducers });

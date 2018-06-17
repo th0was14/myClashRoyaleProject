@@ -20,9 +20,22 @@ import { Home } from "../page/Home";
 import { Main } from "../page/Main";
 import { NavRoute } from "./typings";
 import { PlayerClash } from "../page/PlayerClash";
+import { PlayerPage } from "../page/PlayerPage";
 
-export class Layout extends React.Component {
-  public state = {
+export interface LayoutProps {
+  name?: string;
+}
+export interface LayoutState {
+  isOpen: boolean;
+}
+
+export class Layout extends React.Component<LayoutProps, LayoutState> {
+  constructor(props: LayoutProps) {
+    super(props);
+    console.log("Layout props", props);
+    this.toggle = this.toggle.bind(this);
+  }
+  public state: LayoutState = {
     isOpen: false
   };
   private navLink: NavRoute[] = [
@@ -32,13 +45,9 @@ export class Layout extends React.Component {
       id: "player",
       label: "Player Clash",
       path: "/playerClash/:playerId",
-      component: PlayerClash
+      component: PlayerPage
     }
   ];
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-  }
 
   public toggle = () => {
     this.setState({
