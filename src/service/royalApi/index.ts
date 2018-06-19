@@ -1,7 +1,7 @@
 import { Observable } from "rx";
 import { mapperToPlayerInfo } from "./mapper";
 import { PlayerInfoDto } from "./typings";
-import { PlayerInfo } from "../../components/page/PlayerClash.typings";
+import { PlayerInfo } from "../../components/PlayerClash.typings";
 
 import axiosInstance from "../../axios";
 

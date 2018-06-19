@@ -1,5 +1,5 @@
 import React from "react";
-import PlayerContainer from "../../containers/player/player.container";
+import PlayerContainer from "../containers/player/player.container";
 
 export interface PlayerPageProps {
   name?: string;

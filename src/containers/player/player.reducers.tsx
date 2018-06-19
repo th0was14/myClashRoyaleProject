@@ -1,5 +1,5 @@
-import { PlayerState } from "./app.reducers";
-import { playerFetchActions } from "../actions/typings";
+import { PlayerState } from "../app/app.reducers";
+import { playerFetchActions } from "./typings";
 
 const initialState: PlayerState = {
   playerInfo: {},

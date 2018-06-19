@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { playerFetchActions } from "../actions/typings";
+import { playerFetchActions } from "./typings";
 import { fetchPlayerInfo } from "../../service/royalApi";
 
 function* fetchUser(action) {

@@ -16,11 +16,11 @@ import {
 import { Route, BrowserRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
-import { Home } from "../page/Home";
-import { Main } from "../page/Main";
+import { Home } from "./Home";
+import { Main } from "./Main";
 import { NavRoute } from "./typings";
-import { PlayerClash } from "../page/PlayerClash";
-import { PlayerPage } from "../page/PlayerPage";
+import { PlayerClash } from "../components/PlayerClash";
+import { PlayerPage } from "./PlayerPage";
 
 export interface LayoutProps {
   name?: string;
@@ -29,7 +29,7 @@ export interface LayoutState {
   isOpen: boolean;
 }
 
-export class Layout extends React.Component<LayoutProps, LayoutState> {
+export class AppRouting extends React.Component<LayoutProps, LayoutState> {
   constructor(props: LayoutProps) {
     super(props);
     console.log("Layout props", props);

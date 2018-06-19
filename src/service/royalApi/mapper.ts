@@ -1,5 +1,5 @@
 import { PlayerInfoDto } from "./typings";
-import { PlayerInfo } from "../../components/page/PlayerClash.typings";
+import { PlayerInfo } from "../../components/PlayerClash.typings";
 
 export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
   return {
