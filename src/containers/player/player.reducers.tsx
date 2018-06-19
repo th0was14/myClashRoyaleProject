@@ -21,7 +21,7 @@ export const playerReducers = (
       return { ...state, isFetching: true };
     }
     case playerFetchActions.PLAYER_FETCH_FAILED: {
-      return { ...state, errorMessage: action.payload, isFetching: false };
+      return { ...state, errorMessage: action.payload.message, isFetching: false };
     }
     default:
       return state;

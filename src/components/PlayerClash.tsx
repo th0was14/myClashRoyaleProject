@@ -34,7 +34,7 @@ export class PlayerClash extends React.Component<IPlayer> {
     if (this.props.isFetching) {
       element = <span>Loading ...</span>;
     } else if (this.props.inError) {
-      element = <p>{this.props.errorMessage}</p>;
+      element = <Alert color="danger">{this.props.errorMessage}</Alert>;
     } else {
       element = (
         <Jumbotron>
