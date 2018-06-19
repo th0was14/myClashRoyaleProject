@@ -15,21 +15,19 @@ export interface PlayerProps {
   inError: boolean;
 }
 export interface PlayerDispatch {
-  fetchPlayer1: (playerId) => void;
+  fetchPlayer1: () => void;
 }
 
 type IPlayer = PlayerProps & PlayerDispatch;
 
 export class PlayerClash extends React.Component<IPlayer> {
-  private myId: string = "9GU0880R";
   constructor(props: IPlayer) {
     super(props);
-    this.props.fetchPlayer1(this.myId);
+    this.props.fetchPlayer1();
   }
 
   render() {
     const { name, clanName } = this.props.playerInfo;
-    // const { player } = store.getState();
     let element: JSX.Element;
     if (this.props.isFetching) {
       element = <span>Loading ...</span>;

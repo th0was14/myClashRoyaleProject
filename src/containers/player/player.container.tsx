@@ -8,9 +8,11 @@ import { playerFetchActions } from "./typings";
 import { RoyalState } from "../app/app.reducers";
 import { Dispatch } from "redux";
 
-const mapStateToProps = (state: RoyalState): PlayerProps => {
-  console.log("mapStateToProps RoyalState", state);
+export interface PlayerContainerProps {
+  playerId: string;
+}
 
+const mapStateToProps = (state: RoyalState): PlayerProps => {
   const { playerInfo, isFetching, errorMessage } = state.player;
   return {
     playerInfo,
@@ -20,15 +22,18 @@ const mapStateToProps = (state: RoyalState): PlayerProps => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): PlayerDispatch => ({
-  fetchPlayer1: playerId =>
+const mapDispatchToProps = (
+  dispatch: Dispatch,
+  { playerId }: PlayerContainerProps
+): PlayerDispatch => ({
+  fetchPlayer1: () =>
     dispatch({
       type: playerFetchActions.PLAYER_FETCH_REQUESTED,
       playerId
     })
 });
 
-export default connect<PlayerProps, PlayerDispatch>(
+export default connect<PlayerProps, PlayerDispatch, PlayerContainerProps>(
   mapStateToProps,
   mapDispatchToProps
 )(PlayerClash);

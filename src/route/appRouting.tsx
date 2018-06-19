@@ -32,7 +32,6 @@ export interface LayoutState {
 export class AppRouting extends React.Component<LayoutProps, LayoutState> {
   constructor(props: LayoutProps) {
     super(props);
-    console.log("Layout props", props);
     this.toggle = this.toggle.bind(this);
   }
   public state: LayoutState = {
@@ -45,6 +44,7 @@ export class AppRouting extends React.Component<LayoutProps, LayoutState> {
       id: "player",
       label: "Player Clash",
       path: "/playerClash/:playerId",
+      url: "/playerClash/9GU0880R",
       component: PlayerPage
     }
   ];
@@ -56,9 +56,9 @@ export class AppRouting extends React.Component<LayoutProps, LayoutState> {
   };
 
   private displayLinks = (navRoutes: NavRoute[]) => {
-    return navRoutes.map(({ id, label, path, component, exact }) => (
+    return navRoutes.map(({ id, label, path, url, component, exact }) => (
       <NavItem key={id}>
-        <LinkContainer to={path}>
+        <LinkContainer to={url || path}>
           <Button color="link" onClick={this.toggle}>
             {label}
           </Button>

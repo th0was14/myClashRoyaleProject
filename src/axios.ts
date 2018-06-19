@@ -5,7 +5,7 @@ const myToken: string =
 
 const instance = axios.create({
   baseURL: "https://api.royaleapi.com",
-  // timeout: 1000,
+  timeout: 5000,
   headers: {
     "Access-Control-Allow-Origin": "*",
     Authorization: "Bearer " + myToken,
