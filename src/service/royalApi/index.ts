@@ -1,7 +1,7 @@
 import { Observable } from "rx";
-import { mapperToPlayerInfo } from "./mapper";
+import { mapperToPlayerInfo, mapperToPlayerChest } from "./mapper";
 import { PlayerInfoDto } from "./typings";
-import { PlayerInfo } from "../../components/PlayerClash.typings";
+import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
 
 import axiosInstance from "../../axios";
 
@@ -22,6 +22,13 @@ const fetchByTypeById = <T>(type: string, id: string): Promise<T> => {
   });
 };
 
+const fetch = <T>(url: string): Promise<T> => {
+  const fetchCall = axiosInstance.get(`/${url}`);
+  return fetchCall.then(response => response.data).catch(e => {
+    throw e;
+  });
+};
+
 export const fetchPlayerInfoObservable = (
   type: string,
   id: string
@@ -34,3 +41,9 @@ export const fetchPlayerInfo = (
   type: string,
   id: string
 ): Promise<PlayerInfo> => fetchByTypeById(type, id).then(mapperToPlayerInfo);
+
+export const fetchPlayerChest = (
+  type: string,
+  id: string
+): Promise<PlayerChest> =>
+  fetch(`${type}/${id}/chest`).then(mapperToPlayerChest);

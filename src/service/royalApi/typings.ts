@@ -116,3 +116,12 @@ export interface PlayerInfoDto {
   cards?: CardDto[];
   achievements?: AchievementDto[];
 }
+
+export interface PlayerChestDto {
+  upcoming: string[];
+  superMagical: number;
+  magical: number;
+  legendary: number;
+  epic: number;
+  giant: number;
+}

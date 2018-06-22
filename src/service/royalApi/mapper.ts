@@ -1,5 +1,5 @@
-import { PlayerInfoDto } from "./typings";
-import { PlayerInfo } from "../../components/PlayerClash.typings";
+import { PlayerInfoDto, PlayerChestDto } from "./typings";
+import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
 
 export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
   return {
@@ -7,5 +7,11 @@ export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
     name: dto.name,
     trophies: dto.trophies,
     clanName: dto.clan.name
+  };
+};
+
+export const mapperToPlayerChest = (dto: PlayerChestDto): PlayerChest => {
+  return {
+    chests: dto.upcoming
   };
 };

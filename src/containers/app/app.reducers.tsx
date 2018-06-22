@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
+import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
 import { playerReducers } from "../player/player.reducers";
-import { PlayerInfo } from "../../components/PlayerClash.typings";
 
 export interface PlayerState {
   playerInfo: PlayerInfo;
+  playerChest: PlayerChest;
   isFetching: boolean;
   errorMessage: string;
 }

@@ -3,6 +3,7 @@ import { playerFetchActions } from "./typings";
 
 const initialState: PlayerState = {
   playerInfo: {},
+  playerChest: { chests: [] },
   isFetching: false,
   errorMessage: ""
 };
@@ -15,6 +16,10 @@ export const playerReducers = (
     case playerFetchActions.PLAYER_FETCH_SUCCEEDED: {
       return { ...state, playerInfo: action.payload, isFetching: false };
     }
+    case playerFetchActions.CHEST_FETCH_SUCCEEDED: {
+      return { ...state, playerChest: action.payload, isFetching: false };
+    }
+    case playerFetchActions.CHEST_FETCH_REQUESTED:
     case playerFetchActions.PLAYER_FETCH_REQUESTED: {
       return { ...state, isFetching: true };
     }

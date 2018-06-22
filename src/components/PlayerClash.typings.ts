@@ -4,3 +4,7 @@ export interface PlayerInfo {
   trophies?: number;
   clanName?: string;
 }
+
+export interface PlayerChest {
+  chests: string[];
+}
