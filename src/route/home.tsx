@@ -1,13 +1,17 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import { fetchByTypeAndId } from "../service/jsonServer/index";
 
 export class Home extends React.Component<any> {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    fetchByTypeAndId("clashFriend").then(clashFriends =>
+      this.setState({ clashFriends })
+    );
   }
 
-  public state: any = { id: "9GU0880R" };
+  public state: any = { id: "9GU0880R", clashFriends: [] };
 
   handleChange(event) {
     this.setState({ id: event.target.value });
@@ -18,12 +22,16 @@ export class Home extends React.Component<any> {
       <div>
         <h1>Hello, Welcome to the Home page</h1>
         <ul>
-          <li>
-            hablih : 2gv8prq89
-          </li>
-          <li>
-            benji : 
-          </li>
+          {this.state.clashFriends
+            ? this.state.clashFriends.map(friend => (
+                <li key={friend.id}>
+                  {friend.name} :{" "}
+                  <Link to={"/playerClash/" + friend.clashId}>
+                    {friend.clashId}
+                  </Link>
+                </li>
+              ))
+            : ""}
         </ul>
         <input value={this.state.id} onChange={this.handleChange} />
         <SomeComponent playerId={this.state.id} />
@@ -46,6 +54,6 @@ const ButtonToNavigate = ({ playerId, history }) => {
 const SomeComponent = ({ playerId }) => (
   <Route
     path="/"
-    render={(props) => <ButtonToNavigate {...props} playerId={playerId} />}
+    render={props => <ButtonToNavigate {...props} playerId={playerId} />}
   />
 );

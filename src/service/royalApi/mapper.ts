@@ -6,7 +6,7 @@ export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
     id: dto.tag,
     name: dto.name,
     trophies: dto.trophies,
-    clanName: dto.clan.name
+    clanName: dto.clan ? dto.clan.name : ""
   };
 };
 

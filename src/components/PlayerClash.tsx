@@ -35,13 +35,13 @@ export class PlayerClash extends React.Component<IPlayer> {
       element = (
         <Jumbotron>
           <h1 className="display-3">
-            Hello, {name} of clan {clanName}!
+            Hello, {name} {clanName ? "of clan " + clanName : ""}!
           </h1>
           this is your next chest --->
           {chests.map((chest, index) => (
             <div>
               <span>
-                {index+1} : {chest}
+                {index + 1} : {chest}
               </span>
               <br />
             </div>
