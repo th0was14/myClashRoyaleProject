@@ -17,6 +17,14 @@ export class Home extends React.Component<any> {
     return (
       <div>
         <h1>Hello, Welcome to the Home page</h1>
+        <ul>
+          <li>
+            hablih : 2gv8prq89
+          </li>
+          <li>
+            benji : 
+          </li>
+        </ul>
         <input value={this.state.id} onChange={this.handleChange} />
         <SomeComponent playerId={this.state.id} />
       </div>
