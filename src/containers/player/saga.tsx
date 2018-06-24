@@ -1,10 +1,15 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { playerFetchActions } from "./typings";
 import { fetchPlayerInfo, fetchPlayerChest } from "../../service/royalApi";
+import { PlayerChest, PlayerInfo } from "../../components/PlayerClash.typings";
 
 function* fetchUser(action) {
   try {
-    const playerInfo = yield call(fetchPlayerInfo, "player", action.playerId);
+    const playerInfo: PlayerInfo = yield call(
+      fetchPlayerInfo,
+      "player",
+      action.playerId
+    );
     yield put({
       type: playerFetchActions.PLAYER_FETCH_SUCCEEDED,
       payload: playerInfo
@@ -19,7 +24,11 @@ function* fetchUser(action) {
 
 function* fetchChest(action) {
   try {
-    const playerChest = yield call(fetchPlayerChest, "player", action.playerId);
+    const playerChest: PlayerChest = yield call(
+      fetchPlayerChest,
+      "player",
+      action.playerId
+    );
     yield put({
       type: playerFetchActions.CHEST_FETCH_SUCCEEDED,
       payload: playerChest
@@ -31,7 +40,6 @@ function* fetchChest(action) {
     });
   }
 }
-
 
 function* mySaga() {
   yield takeEvery(playerFetchActions.PLAYER_FETCH_REQUESTED, fetchUser);

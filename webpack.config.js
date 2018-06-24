@@ -8,6 +8,7 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
+    host: "10.0.0.3",
     // contentBase: "./",
     historyApiFallback: true
   },
