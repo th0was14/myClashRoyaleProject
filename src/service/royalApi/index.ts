@@ -1,9 +1,10 @@
-import { Observable } from "rx";
 import { mapperToPlayerInfo, mapperToPlayerChest } from "./mapper";
 import { PlayerInfoDto } from "./typings";
 import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
 
 import axiosInstance from "../../axios";
+import { from, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 // export const postComment = (body: string, postId: number) =>
 //   fetch(`${baseUrl}/comments/`, {
@@ -33,9 +34,7 @@ export const fetchPlayerInfoObservable = (
   type: string,
   id: string
 ): Observable<PlayerInfo> =>
-  Observable.fromPromise<PlayerInfoDto>(fetchByTypeById(type, id)).map(
-    mapperToPlayerInfo
-  );
+  from<PlayerInfoDto>(fetchByTypeById(type, id)).pipe(map(mapperToPlayerInfo));
 
 export const fetchPlayerInfo = (
   type: string,
