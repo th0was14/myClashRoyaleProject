@@ -1,15 +1,19 @@
-import mySaga from "./containers/player/saga";
 import { createStore, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
 import { appState } from "./containers/app/app.reducers";
 import { createLogger } from "redux-logger";
+
+import { createEpicMiddleware } from "redux-observable";
+import { rootEpic } from './containers/rootEpic';
 
 const logger = createLogger({
   collapsed: true
 });
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(appState, applyMiddleware(sagaMiddleware, logger));
-sagaMiddleware.run(mySaga);
+const epicMiddleware = createEpicMiddleware();
+
+const store = createStore(appState, applyMiddleware(epicMiddleware, logger));
+
+epicMiddleware.run(rootEpic);
 
 export default store;
+

@@ -1,5 +1,7 @@
 import { PlayerState } from "../app/app.reducers";
-import { playerFetchActions } from "./typings";
+import { chestFetchAction, playerFetchAction } from "./typings";
+import { isType } from "typescript-fsa";
+import reduceReducers from "reduce-reducers";
 
 const initialState: PlayerState = {
   playerInfo: {},
@@ -8,29 +10,44 @@ const initialState: PlayerState = {
   errorMessage: ""
 };
 
-export const playerReducers = (
+const playerReducers = (
   state: PlayerState = initialState,
   action: any
-): PlayerState => {
-  switch (action.type) {
-    case playerFetchActions.PLAYER_FETCH_SUCCEEDED: {
-      return { ...state, playerInfo: action.payload, isFetching: false };
-    }
-    case playerFetchActions.CHEST_FETCH_SUCCEEDED: {
-      return { ...state, playerChest: action.payload, isFetching: false };
-    }
-    case playerFetchActions.CHEST_FETCH_REQUESTED:
-    case playerFetchActions.PLAYER_FETCH_REQUESTED: {
-      return { ...state, isFetching: true };
-    }
-    case playerFetchActions.PLAYER_FETCH_FAILED: {
-      return {
-        ...state,
-        errorMessage: action.payload.message,
-        isFetching: false
-      };
-    }
-    default:
-      return state;
+) => {
+  if (isType(action, playerFetchAction.started)) {
+    return { ...state, isFetching: true };
   }
+  if (isType(action, playerFetchAction.done)) {
+    return { ...state, playerInfo: action.payload.result, isFetching: false };
+  }
+  if (isType(action, playerFetchAction.failed)) {
+    return {
+      ...state,
+      errorMessage: action.payload,
+      isFetching: false
+    };
+  }
+  return state;
 };
+
+const chestReducers = (
+  state: PlayerState = initialState,
+  action: any
+) => {
+  if (isType(action, chestFetchAction.started)) {
+    return { ...state, isFetching: true };
+  }
+  if (isType(action, chestFetchAction.done)) {
+    return { ...state, playerChest: action.payload.result, isFetching: false };
+  }
+  if (isType(action, chestFetchAction.failed)) {
+    return {
+      ...state,
+      errorMessage: action.payload,
+      isFetching: false
+    };
+  }
+  return state;
+};
+
+export const royalReducers = reduceReducers(playerReducers, chestReducers);

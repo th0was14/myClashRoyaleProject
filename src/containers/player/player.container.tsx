@@ -6,7 +6,7 @@ import {
   PlayerProps
 } from "../../components/PlayerClash";
 import { RoyalState } from "../app/app.reducers";
-import { playerFetchActions } from "./typings";
+import { chestFetchAction, playerFetchAction } from "./typings";
 
 export interface PlayerContainerProps {
   playerId: string;
@@ -27,16 +27,8 @@ const mapDispatchToProps = (
   dispatch: Dispatch,
   { playerId }: PlayerContainerProps
 ): PlayerDispatch => ({
-  fetchPlayerInfo: () =>
-    dispatch({
-      type: playerFetchActions.PLAYER_FETCH_REQUESTED,
-      playerId
-    }),
-  fetchPlayerChest: () =>
-    dispatch({
-      type: playerFetchActions.CHEST_FETCH_REQUESTED,
-      playerId
-    })
+  fetchPlayerInfo: () => dispatch(playerFetchAction.started(playerId)),
+  fetchPlayerChest: () => dispatch(chestFetchAction.started(playerId))
 });
 
 export default connect<PlayerProps, PlayerDispatch, PlayerContainerProps>(

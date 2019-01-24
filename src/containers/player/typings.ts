@@ -1,7 +1,15 @@
-export const playerFetchActions = {
-  PLAYER_FETCH_REQUESTED: "PLAYER_FETCH_REQUESTED",
-  PLAYER_FETCH_SUCCEEDED: "PLAYER_FETCH_SUCCEEDED",
-  PLAYER_FETCH_FAILED: "PLAYER_FETCH_FAILED",
-  CHEST_FETCH_REQUESTED: "CHEST_FETCH_REQUESTED",
-  CHEST_FETCH_SUCCEEDED: "CHEST_FETCH_SUCCEEDED"
-};
+import { actionCreatorFactory } from "typescript-fsa";
+import { PlayerChest, PlayerInfo } from "../../components/PlayerClash.typings";
+
+const actionCreator = actionCreatorFactory();
+
+export const playerFetchAction = actionCreator.async<
+  string,
+  PlayerInfo,
+  string
+>("PLAYER_FETCH");
+export const chestFetchAction = actionCreator.async<
+  string,
+  PlayerChest,
+  string
+>("CHEST_FETCH");

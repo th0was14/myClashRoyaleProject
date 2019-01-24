@@ -19,8 +19,9 @@ type IPlayer = PlayerProps & PlayerDispatch;
 export class PlayerClash extends React.Component<IPlayer> {
   constructor(props: IPlayer) {
     super(props);
-    this.props.fetchPlayerInfo();
-    this.props.fetchPlayerChest();
+    const { fetchPlayerInfo, fetchPlayerChest } = this.props;
+    fetchPlayerInfo();
+    fetchPlayerChest();
   }
 
   render() {
@@ -43,7 +44,7 @@ export class PlayerClash extends React.Component<IPlayer> {
                 Hello, {name} {clanName ? "of clan " + clanName : ""}!
               </h1>
               this is your next chest --->
-              {chests.map((chest, index) => (
+              {chests && chests.map((chest, index) => (
                 <span style={spanStyle} key={index}>
                   {index + 1} :{" "}
                   <img className="img-responsive" src={chest.src} height="40" />
@@ -55,8 +56,8 @@ export class PlayerClash extends React.Component<IPlayer> {
             <div className="row">
               {currentDeck
                 ? currentDeck.map(card => (
-                    <div>
-                      <span key={card.id}>{card.level}</span>
+                    <div key={card.id}>
+                      <span>{card.level}</span>
                       <img src={card.icon} height="65" />
                     </div>
                   ))

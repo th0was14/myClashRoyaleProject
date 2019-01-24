@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
-import { playerReducers } from "../player/player.reducers";
+import { royalReducers } from "../player/player.reducers";
 
 export interface PlayerState {
   playerInfo: PlayerInfo;
@@ -13,4 +13,4 @@ export interface RoyalState {
   player: PlayerState;
 }
 
-export const appState = combineReducers<RoyalState>({ player: playerReducers });
+export const appState = combineReducers<RoyalState>({ player: royalReducers });

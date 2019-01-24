@@ -1,7 +1,7 @@
 import axios from "axios";
+import { API_KEY } from "./constant";
 
-const myToken: string =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTcxLCJpZGVuIjoiMjMzMzI2MTUxOTAzMjE1NjE2IiwibWQiOnt9LCJ0cyI6MTUyNzkzNjQ1NzE5NX0.uSCGosQIvVeEM9iIUjR6y4xZe6GvSYu_uip1B1vJ-Qk";
+const myToken: string = API_KEY;
 
 const instance = axios.create({
   baseURL: "https://api.royaleapi.com",
