@@ -2,6 +2,7 @@ import { PlayerState } from "../app/app.reducers";
 import { chestFetchAction, playerFetchAction } from "./typings";
 import { isType } from "typescript-fsa";
 import reduceReducers from "reduce-reducers";
+import { Action } from "redux";
 
 const initialState: PlayerState = {
   playerInfo: {},
@@ -12,8 +13,8 @@ const initialState: PlayerState = {
 
 const playerReducers = (
   state: PlayerState = initialState,
-  action: any
-) => {
+  action: Action
+): PlayerState => {
   if (isType(action, playerFetchAction.started)) {
     return { ...state, isFetching: true };
   }
@@ -23,7 +24,7 @@ const playerReducers = (
   if (isType(action, playerFetchAction.failed)) {
     return {
       ...state,
-      errorMessage: action.payload,
+      errorMessage: action.payload.error,
       isFetching: false
     };
   }
@@ -32,8 +33,8 @@ const playerReducers = (
 
 const chestReducers = (
   state: PlayerState = initialState,
-  action: any
-) => {
+  action: Action
+): PlayerState => {
   if (isType(action, chestFetchAction.started)) {
     return { ...state, isFetching: true };
   }
@@ -43,11 +44,11 @@ const chestReducers = (
   if (isType(action, chestFetchAction.failed)) {
     return {
       ...state,
-      errorMessage: action.payload,
+      errorMessage: action.payload.error,
       isFetching: false
     };
   }
   return state;
 };
 
-export const royalReducers = reduceReducers(playerReducers, chestReducers);
+export const royalReducers = reduceReducers<PlayerState>(initialState, playerReducers, chestReducers);
