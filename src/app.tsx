@@ -1,7 +1,15 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Layout } from "./components/layout/Layout";
+import "react-toastify/dist/ReactToastify.min.css";
+import * as ReactDOM from "react-dom";
+import store from "./store";
+import { Provider } from "react-redux";
+import { AppRouting } from "./route/appRouting";
+// @flow
 
-ReactDOM.render(<Layout />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <AppRouting />
+  </Provider>,
+  document.getElementById("root")
+);

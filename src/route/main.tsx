@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { FormContainer } from "../container/FormContainer";
+import { FormContainer } from "../old/FormContainer";
 
 export class Main extends React.Component {
   constructor(props) {

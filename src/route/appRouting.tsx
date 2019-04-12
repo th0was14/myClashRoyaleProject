@@ -15,22 +15,39 @@ import {
 } from "reactstrap";
 import { Route, BrowserRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import { Home } from "./Home";
 import { Main } from "./Main";
 import { NavRoute } from "./typings";
+import { PlayerClash } from "../components/PlayerClash";
+import { PlayerPage } from "./PlayerPage";
 
-export class Layout extends React.Component {
-  public state = {
+export interface LayoutProps {
+  name?: string;
+}
+export interface LayoutState {
+  isOpen: boolean;
+}
+
+export class AppRouting extends React.Component<LayoutProps, LayoutState> {
+  constructor(props: LayoutProps) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+  }
+  public state: LayoutState = {
     isOpen: false
   };
   private navLink: NavRoute[] = [
     { id: "home", label: "Home", path: "/", component: Home, exact: true },
-    { id: "main", label: "Main", path: "/main", component: Main }
+    { id: "main", label: "Main", path: "/main", component: Main },
+    {
+      id: "player",
+      label: "Player Clash",
+      path: "/playerClash/:playerId",
+      url: "/playerClash/9GU0880R",
+      component: PlayerPage
+    }
   ];
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-  }
 
   public toggle = () => {
     this.setState({
@@ -39,9 +56,9 @@ export class Layout extends React.Component {
   };
 
   private displayLinks = (navRoutes: NavRoute[]) => {
-    return navRoutes.map(({ id, label, path, component, exact }) => (
+    return navRoutes.map(({ id, label, path, url, component, exact }) => (
       <NavItem key={id}>
-        <LinkContainer to={path}>
+        <LinkContainer to={url || path}>
           <Button color="link" onClick={this.toggle}>
             {label}
           </Button>
@@ -70,6 +87,7 @@ export class Layout extends React.Component {
             </Collapse>
           </Navbar>
           <hr />
+          <ToastContainer />
           {this.configRoutes(this.navLink)}
         </div>
       </BrowserRouter>
