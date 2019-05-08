@@ -16,11 +16,11 @@ import {
 import { Route, BrowserRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
-import { Home } from "./Home";
-import { Main } from "./Main";
+import { Home } from "./home";
+import { Main } from "./main";
 import { NavRoute } from "./typings";
 import { PlayerClash } from "../components/PlayerClash";
-import { PlayerPage } from "./PlayerPage";
+import { PlayerPage } from "./playerPage";
 
 export interface LayoutProps {
   name?: string;

@@ -2,7 +2,7 @@
   "name": "test-fake-api",
   "version": "1.0.0",
   "description": "test fake api on server-json",
-  "main": "src/index.ts",
+  "main": "myReactApp/src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",

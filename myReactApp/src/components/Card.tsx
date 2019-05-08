@@ -11,10 +11,10 @@ export class Card extends React.Component {
     super(props);
   }
   public render() {
-    return <Fragment>
-        <Card >
-
-        </Card>
-    </Fragment>;
+    return (
+      <Fragment>
+        <Card />
+      </Fragment>
+    );
   }
 }

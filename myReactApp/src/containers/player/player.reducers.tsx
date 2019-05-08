@@ -51,4 +51,8 @@ const chestReducers = (
   return state;
 };
 
-export const royalReducers = reduceReducers<PlayerState>(initialState, playerReducers, chestReducers);
+export const royalReducers = reduceReducers<PlayerState>(
+  initialState,
+  playerReducers,
+  chestReducers
+);

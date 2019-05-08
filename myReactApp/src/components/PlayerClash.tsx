@@ -1,6 +1,8 @@
 import React from "react";
 import { Alert, Jumbotron } from "reactstrap";
-import { PlayerInfo, PlayerChest } from "./PlayerClash.typings";
+import { PlayerInfo, PlayerChest, Card } from "./PlayerClash.typings";
+import { map } from "lodash";
+import { CardClash } from "./CardClash";
 
 export interface PlayerProps {
   playerInfo: PlayerInfo;
@@ -44,25 +46,23 @@ export class PlayerClash extends React.Component<IPlayer> {
                 Hello, {name} {clanName ? "of clan " + clanName : ""}!
               </h1>
               this is your next chest --->
-              {chests && chests.map((chest, index) => (
-                <span style={spanStyle} key={index}>
-                  {index + 1} :{" "}
-                  <img className="img-responsive" src={chest.src} height="40" />
-                </span>
-              ))}
+              {chests &&
+                chests.map((chest, index) => (
+                  <span style={spanStyle} key={index}>
+                    {index + 1} :{" "}
+                    <img
+                      className="img-responsive"
+                      src={chest.src}
+                      height="40"
+                    />
+                  </span>
+                ))}
             </Jumbotron>
           </div>
           <div className="row">
-            <div className="row">
-              {currentDeck
-                ? currentDeck.map(card => (
-                    <div key={card.id}>
-                      <span>{card.level}</span>
-                      <img src={card.icon} height="65" />
-                    </div>
-                  ))
-                : ""}
-            </div>
+            {map(currentDeck, (card: Card) => (
+              <CardClash key={card.id} icon={card.icon} level={card.level} />
+            ))}
             <div className="row" />
           </div>
         </div>

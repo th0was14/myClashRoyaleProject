@@ -18,23 +18,27 @@ import { map } from "rxjs/operators";
 
 const fetchByTypeById = <T>(type: string, id: string): Promise<T> => {
   const fetchCall = axiosInstance.get(`/${type}/${id}`);
-  return fetchCall.then(response => response.data).catch(e => {
-    throw e;
-  });
+  return fetchCall
+    .then(response => response.data)
+    .catch(e => {
+      throw e;
+    });
 };
 
 const fetch = <T>(url: string): Promise<T> => {
   const fetchCall = axiosInstance.get(`/${url}`);
-  return fetchCall.then(response => response.data).catch(e => {
-    throw e;
-  });
+  return fetchCall
+    .then(response => response.data)
+    .catch(e => {
+      throw e;
+    });
 };
 
-export const fetchPlayerInfoObservable = (
-  type: string,
-  id: string
-): Observable<PlayerInfo> =>
-  from<PlayerInfoDto>(fetchByTypeById(type, id)).pipe(map(mapperToPlayerInfo));
+// export const fetchPlayerInfoObservable = (
+//   type: string,
+//   id: string
+// ): Observable<PlayerInfo> =>
+//   from<PlayerInfoDto>(fetchByTypeById(type, id)).pipe(map(mapperToPlayerInfo));
 
 export const fetchPlayerInfo = (
   type: string,

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Input } from "./Input";
-import { postComment, fetchByTypeAndId } from "../service/jsonServer/index";
+import { postComment, fetchByTypeAndId } from "../service/jsonServer";
 import { Button } from "reactstrap";
 
 export class FormContainer extends React.Component {

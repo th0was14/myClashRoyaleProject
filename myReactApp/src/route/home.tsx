@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
-import { fetchByTypeAndId } from "../service/jsonServer/index";
+import { fetchByTypeAndId } from "../service/jsonServer";
 import { Jumbotron, Button, Input } from "reactstrap";
 import { ListFriend } from "../components/ListFriend";
 
