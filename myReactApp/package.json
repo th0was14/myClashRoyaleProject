@@ -1,15 +1,14 @@
 {
-  "name": "test-fake-api",
+  "name": "my-react-app",
   "version": "1.0.0",
   "description": "test fake api on server-json",
-  "main": "myReactApp/src/index.ts",
+  "main": "./src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "api": "json-server --watch db.json --port 3004 --host 10.0.0.3",
-    "flow": "flow"
+    "api": "json-server --watch db.json --port 3004 --host 10.0.0.3"
   },
   "keywords": [
     "server-json"
@@ -50,7 +49,6 @@
     "@types/react-router-dom": "^4.2.7",
     "@types/redux-logger": "^3.0.6",
     "axios": "^0.18.0",
-    "flow-bin": "^0.91.0",
     "font-awesome": "^4.7.0",
     "popper.js": "^1.14.3",
     "react-redux": "^6.0.0",
