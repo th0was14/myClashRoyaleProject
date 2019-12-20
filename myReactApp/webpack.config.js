@@ -9,8 +9,6 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    // host: "10.0.0.3",
-    // contentBase: "./",
     open: "Chrome",
     historyApiFallback: true,
     proxy: {
@@ -46,7 +44,7 @@ module.exports = {
       API_KEY: JSON.stringify(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI5NCwiaWRlbiI6IjIzMzMyNjE1MTkwMzIxNTYxNiIsIm1kIjp7InVzZXJuYW1lIjoidGgwd2FzIiwiZGlzY3JpbWluYXRvciI6Ijk5MjAiLCJrZXlWZXJzaW9uIjozfSwidHMiOjE1NzY3OTMxMzk5OTR9.hA8BY8YpuCgRNZFGj1jrsRI4ua64PsMzMKekKbDk0ls"
       )
-    })
+    }),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
