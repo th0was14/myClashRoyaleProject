@@ -2,7 +2,8 @@ import { mapperToPlayerInfo, mapperToPlayerChest } from "./mapper";
 import { PlayerInfoDto } from "./typings";
 import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
 
-import axiosInstance from "../../axios";
+import instance from "../../axiosInstance";
+
 import { from, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -16,8 +17,10 @@ import { map } from "rxjs/operators";
 //     body: JSON.stringify({ body, postId })
 //   }).then(res => res.json());
 
+const baseUrl = "/api";
+
 const fetchByTypeById = <T>(type: string, id: string): Promise<T> => {
-  const fetchCall = axiosInstance.get(`/${type}/${id}`);
+  const fetchCall = instance.get(`${baseUrl}/${type}/${id}`);
   return fetchCall
     .then(response => response.data)
     .catch(e => {
@@ -26,7 +29,7 @@ const fetchByTypeById = <T>(type: string, id: string): Promise<T> => {
 };
 
 const fetch = <T>(url: string): Promise<T> => {
-  const fetchCall = axiosInstance.get(`/${url}`);
+  const fetchCall = instance.get(`${baseUrl}/${url}`);
   return fetchCall
     .then(response => response.data)
     .catch(e => {
@@ -49,4 +52,4 @@ export const fetchPlayerChest = (
   type: string,
   id: string
 ): Promise<PlayerChest> =>
-  fetch(`${type}/${id}/chest`).then(mapperToPlayerChest);
+  fetch(`${type}/${id}/chests`).then(mapperToPlayerChest);

@@ -1,14 +1,14 @@
-import axios from "axios";
+// @ts-ignore
+import axios, { AxiosInstance } from "axios";
 import { API_KEY } from "./constant";
 
 const myToken: string = API_KEY;
 
-const instance = axios.create({
-  baseURL: "https://api.royaleapi.com",
+const instance: AxiosInstance = axios.create({
   timeout: 5000,
   headers: {
     "Access-Control-Allow-Origin": "*",
-    Authorization: "Bearer " + myToken,
+    authorization: "Bearer " + myToken,
     Accept: "application/json, text/plain, */*",
     "Content-Type": "application/json"
   }

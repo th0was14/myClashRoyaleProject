@@ -26,4 +26,4 @@ export const mapperToPlayerChest = (dto: PlayerChestDto): PlayerChest => {
 };
 
 const getChestSrc = (chestName: string) =>
-  `https://royaleapi.github.io/cr-api-assets/chests/chest-${chestName}.png`;
+  `https://royaleapi.github.io/cr-api-assets/chests/chest-${chestName === "golden" ? "gold": chestName}.png`;
