@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
@@ -12,7 +12,15 @@ module.exports = {
     // host: "10.0.0.3",
     // contentBase: "./",
     open: "Chrome",
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      "/api": {
+        target: "https://api.royaleapi.com",
+        pathRewrite: {"^/api" : ""},
+        secure: false,
+        changeOrigin: true
+      },
+    }
   },
   module: {
     rules: [
@@ -28,7 +36,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
+    new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["dist"]}),
     new HtmlWebpackPlugin({
       title: "Development",
       template: "./src/index.html",
@@ -36,7 +44,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       API_KEY: JSON.stringify(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI5NCwiaWRlbiI6IjIzMzMyNjE1MTkwMzIxNTYxNiIsIm1kIjp7fSwidHMiOjE1NDgzNTMxNDkyODZ9.MkQCF_kgr7P2ntlj2RNfmpMbJR_9K8kl600WHIOg9do"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI5NCwiaWRlbiI6IjIzMzMyNjE1MTkwMzIxNTYxNiIsIm1kIjp7InVzZXJuYW1lIjoidGgwd2FzIiwiZGlzY3JpbWluYXRvciI6Ijk5MjAiLCJrZXlWZXJzaW9uIjozfSwidHMiOjE1NzY3OTMxMzk5OTR9.hA8BY8YpuCgRNZFGj1jrsRI4ua64PsMzMKekKbDk0ls"
       )
     })
   ],
