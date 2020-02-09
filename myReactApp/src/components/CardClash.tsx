@@ -5,7 +5,7 @@ export interface Props {
   icon: string;
 }
 
-export const CardClash: React.FunctionComponent<Props> = ({ level, icon }) => (
+export const CardClash: React.FC<Props> = ({ level, icon }) => (
   <div>
     <span>{level}</span>
     <img src={icon} height="65" />
