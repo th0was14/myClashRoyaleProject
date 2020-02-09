@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
@@ -14,11 +14,11 @@ module.exports = {
     proxy: {
       "/api": {
         target: "https://api.royaleapi.com",
-        pathRewrite: {"^/api" : ""},
+        pathRewrite: { "^/api": "" },
         secure: false,
         changeOrigin: true
-      },
-     }
+      }
+    }
   },
   module: {
     rules: [
@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ["dist"] }),
     new HtmlWebpackPlugin({
       title: "Development",
       template: "./src/index.html",
@@ -44,11 +44,11 @@ module.exports = {
       API_KEY: JSON.stringify(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI5NCwiaWRlbiI6IjIzMzMyNjE1MTkwMzIxNTYxNiIsIm1kIjp7InVzZXJuYW1lIjoidGgwd2FzIiwiZGlzY3JpbWluYXRvciI6Ijk5MjAiLCJrZXlWZXJzaW9uIjozfSwidHMiOjE1NzY3OTMxMzk5OTR9.hA8BY8YpuCgRNZFGj1jrsRI4ua64PsMzMKekKbDk0ls"
       )
-    }),
+    })
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    modules: [path.join(__dirname, "js/helpers"), "node_modules"],
+    modules: [path.join(__dirname, "js/helpers"), "node_modules"]
   },
   output: {
     filename: "[name].bundle.js",
