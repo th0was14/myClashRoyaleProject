@@ -4,7 +4,7 @@
   "description": "test fake api on server-json",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"my-react-app-Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
