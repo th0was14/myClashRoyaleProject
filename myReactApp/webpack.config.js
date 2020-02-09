@@ -9,17 +9,15 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    // host: "10.0.0.3",
-    // contentBase: "./",
     open: "Chrome",
     historyApiFallback: true,
     proxy: {
       "/api": {
         target: "https://api.royaleapi.com",
-        pathRewrite: {"^/api" : ""},
+        pathRewrite: { "^/api": "" },
         secure: false,
         changeOrigin: true
-      },
+      }
     }
   },
   module: {
@@ -36,7 +34,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["dist"]}),
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ["dist"] }),
     new HtmlWebpackPlugin({
       title: "Development",
       template: "./src/index.html",
@@ -50,10 +48,10 @@ module.exports = {
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    modules: [path.join(__dirname, "js/helpers"), "node_modules"],
+    modules: [path.join(__dirname, "js/helpers"), "node_modules"]
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "public")
   }
 };
