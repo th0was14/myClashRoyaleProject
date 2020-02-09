@@ -1,8 +1,7 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
-import { fetchByTypeAndId } from "../service/jsonServer";
+import { Route } from "react-router-dom";
 import { Jumbotron, Button, Input } from "reactstrap";
-import { ListFriend } from "../components/ListFriend";
+import ListFriend  from "../components/ListFriend";
 
 export interface HomeProps {
   id: string;
@@ -48,19 +47,19 @@ export class Home extends React.Component<HomeProps, HomeState> {
   }
 }
 
-const ButtonToNavigate = ({ playerId, history }) => {
+const ButtonToNavigate: React.FC<{ playerId: string, history: any }> = ({ playerId, history }) => {
   return (
     <Button
       className="col-4"
       color="primary"
-      onClick={() => history.push("/playerClash/" + playerId)}
+      onClick={() => history.push(`/playerClash/${playerId}`)}
     >
       Go to player with id {playerId}
     </Button>
   );
 };
 
-const SomeComponent = ({ playerId }) => (
+const SomeComponent: React.FC<{ playerId: string }> = ({ playerId }) => (
   <Route
     path="/"
     render={props => <ButtonToNavigate {...props} playerId={playerId} />}

@@ -1,37 +1,30 @@
-import React, { Fragment } from "react";
+import * as React from "react";
 import { ClashFriend } from "../service/jsonServer/typings";
 import { Link } from "react-router-dom";
 import { fetchByTypeAndId } from "../service/jsonServer";
+import { map } from "lodash";
 
-export interface ListFriendState {
-  friendList: ClashFriend[];
-}
+const ListFriend: React.FC = () => {
+  const [friendList, setFriendList] = React.useState<ClashFriend[]>();
 
-export class ListFriend extends React.Component<any, ListFriendState> {
-  constructor(props) {
-    super(props);
+  React.useEffect(() => {
     fetchByTypeAndId("clashFriend").then((friendList: ClashFriend[]) =>
-      this.setState({ friendList })
+      setFriendList(friendList)
     );
-  }
-  public state: ListFriendState = { friendList: [] };
+  }, []);
 
-  public render() {
-    return (
-      <Fragment>
-        <ul>
-          {this.state.friendList
-            ? this.state.friendList.map(friend => (
-                <li key={friend.id}>
-                  {friend.name} :{" "}
-                  <Link to={"/playerClash/" + friend.clashId}>
-                    {friend.clashId}
-                  </Link>
-                </li>
-              ))
-            : ""}
-        </ul>
-      </Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      {friendList && <ul>
+        {map(friendList, ({ name, id, clashId }) => (
+          <li key={id}>
+            <span>{`${name} :`}</span>
+            <Link to={`/playerClash/${clashId}`}>{clashId}</Link>
+          </li>
+        ))}
+      </ul>}
+    </React.Fragment>
+  );
+};
+
+export default ListFriend;
