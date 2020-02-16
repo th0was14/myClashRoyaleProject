@@ -124,4 +124,5 @@ export interface PlayerChestDto {
   legendary: number;
   epic: number;
   giant: number;
+  megaLightning: number;
 }

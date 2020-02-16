@@ -6,7 +6,7 @@ import { Action } from "redux";
 
 const initialState: PlayerState = {
   playerInfo: {},
-  playerChest: { chests: [] },
+  playerChest: { upcomingChests: [], rareChests: [] },
   isFetching: false,
   errorMessage: ""
 };
