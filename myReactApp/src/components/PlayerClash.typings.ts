@@ -15,8 +15,10 @@ export interface Card {
 export interface Chest {
   name: string;
   src: string;
+  position: number;
 }
 
 export interface PlayerChest {
-  chests: Chest[];
+  upcomingChests: Chest[];
+  rareChests: Chest[];
 }

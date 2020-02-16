@@ -1,6 +1,6 @@
 import { PlayerInfoDto, PlayerChestDto } from "./typings";
 import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
-import { get } from "lodash";
+import { get, omit, keys, map, toLower, orderBy } from "lodash";
 
 export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
   return {
@@ -18,10 +18,12 @@ export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
 
 export const mapperToPlayerChest = (dto: PlayerChestDto): PlayerChest => {
   return {
-    chests: dto.upcoming.map(chestName => ({
+    upcomingChests: dto.upcoming.map((chestName, index) => ({
       name: chestName,
-      src: getChestSrc(chestName)
-    }))
+      src: getChestSrc(chestName),
+      position: index + 1,
+    })),
+    rareChests: orderBy(map(keys(omit(dto, "upcoming")), key => ({name: key, src: getChestSrc(toLower(key)), position: dto[key]})), ({position}) => position)
   };
 };
 
