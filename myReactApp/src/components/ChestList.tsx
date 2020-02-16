@@ -9,9 +9,9 @@ export interface Props {
 }
 
 const ChestList: React.FC<Props> = ({ title, chests }) => (
-  <div className="row col-12 py-2 align-items-baseline">
+  <div className="row col-12 py-2 align-items-baseline flex-wrap">
     <span className="mr-2">{title}</span>
-    <div>{chests && map(chests, chest => <ChestComp chest={chest} />)}</div>
+    {chests && map(chests, chest => <ChestComp chest={chest} />)}
   </div>
 );
 

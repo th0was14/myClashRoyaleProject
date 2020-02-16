@@ -7,10 +7,10 @@ export interface Props {
 }
 
 const ChestComp: React.FC<Props> = ({ chest }) => (
-  <span className="mr-3">
+  <div className="mr-3">
     <Badge color="primary">{chest.position}</Badge>
     <img className="img-responsive" src={chest.src} height="40" />
-  </span>
+  </div>
 );
 
 export default ChestComp;
