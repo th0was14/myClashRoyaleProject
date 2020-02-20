@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import * as ReactDOM from "react-dom";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { AppRouting } from "route/appRouting";
+import { AppRouting } from "components/appRouting";
 // @flow
 
 ReactDOM.render(

@@ -1,5 +1,5 @@
 import { PlayerChestDto, PlayerInfoDto } from "./typings";
-import { PlayerChest, PlayerInfo } from "components/PlayerClash.typings";
+import { PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
 import { get, keys, map, omit, orderBy, toLower } from "lodash";
 
 export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {

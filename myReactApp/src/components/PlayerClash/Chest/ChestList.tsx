@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Chest } from "./PlayerClash.typings";
-import ChestComp from "./ChestComp";
+import { Chest } from "components/PlayerClash/PlayerClash.typings";
+import ChestComp from "components/PlayerClash/Chest/ChestComp";
 import { map } from "lodash";
 
 export interface Props {

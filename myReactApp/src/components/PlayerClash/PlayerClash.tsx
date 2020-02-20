@@ -1,9 +1,9 @@
 import React from "react";
 import { Alert, Jumbotron } from "reactstrap";
-import { Card, PlayerChest, PlayerInfo } from "./PlayerClash.typings";
+import { Card, PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
 import { map } from "lodash";
-import { CardClash } from "./CardClash";
-import ChestList from "./ChestList";
+import { CardClash } from "components/PlayerClash/Card/CardClash";
+import ChestList from "components/PlayerClash/Chest/ChestList";
 
 export interface PlayerProps {
   playerInfo: PlayerInfo;

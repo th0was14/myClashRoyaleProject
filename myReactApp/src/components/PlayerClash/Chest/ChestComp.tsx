@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Chest } from "./PlayerClash.typings";
+import { Chest } from "components/PlayerClash/PlayerClash.typings";
 import { Badge } from "reactstrap";
 
 export interface Props {

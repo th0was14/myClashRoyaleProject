@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { Button, Input, Jumbotron } from "reactstrap";
-import ListFriend from "../components/ListFriend";
+import ListFriend from "components/HomePage/ListFriend";
 
 export interface HomeProps {
   id: string;

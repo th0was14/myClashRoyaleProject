@@ -1,5 +1,5 @@
 import { actionCreatorFactory } from "typescript-fsa";
-import { PlayerChest, PlayerInfo } from "components/PlayerClash.typings";
+import { PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
 
 const actionPlayerCreator = actionCreatorFactory("PLAYER");
 const actionChestCreator = actionCreatorFactory("CHEST");

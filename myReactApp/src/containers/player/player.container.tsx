@@ -4,7 +4,7 @@ import {
   PlayerClash,
   PlayerDispatch,
   PlayerProps
-} from "components/PlayerClash";
+} from "components/PlayerClash/PlayerClash";
 import { chestFetchAction, playerFetchAction } from "./typings";
 import { RoyalState } from "store/reducers";
 
