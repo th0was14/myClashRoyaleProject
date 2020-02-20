@@ -1,7 +1,7 @@
 import { catchError, filter, map, switchMap } from "rxjs/operators";
-import { chestFetchAction } from "./typings";
+import { chestFetchAction } from "../typings";
 import { from, of } from "rxjs";
-import { fetchPlayerChest } from "../../service/royalApi";
+import { fetchPlayerChest } from "api/service/royalApi";
 
 export const chestEpic = actions$ => {
   return actions$.pipe(

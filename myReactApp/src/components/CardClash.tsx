@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Badge} from "reactstrap";
+import { Badge } from "reactstrap";
 
 export interface Props {
   level: number;

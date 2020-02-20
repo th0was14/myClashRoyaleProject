@@ -63,6 +63,7 @@ export interface GamesDto {
 export interface CurrentDeckDto {
   name: string;
   level: number;
+  displayLevel: number;
   maxLevel: number;
   count: number;
   rarity: string;

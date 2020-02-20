@@ -4,9 +4,9 @@ import {
   PlayerClash,
   PlayerDispatch,
   PlayerProps
-} from "../../components/PlayerClash";
-import { RoyalState } from "../app/app.reducers";
+} from "components/PlayerClash";
 import { chestFetchAction, playerFetchAction } from "./typings";
+import { RoyalState } from "store/reducers";
 
 export interface PlayerContainerProps {
   playerId: string;

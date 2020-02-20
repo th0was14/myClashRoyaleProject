@@ -1,30 +1,25 @@
 import React from "react";
-import ReactDOM, { render } from "react-dom";
 import {
+  Button,
+  Collapse,
+  Nav,
   Navbar,
   NavbarBrand,
   NavbarToggler,
-  Collapse,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownItem,
-  DropdownMenu,
-  Button
+  NavItem
 } from "reactstrap";
-import { Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { Home } from "./home";
 import { Main } from "./main";
 import { NavRoute } from "./typings";
-import { PlayerClash } from "../components/PlayerClash";
 import { PlayerPage } from "./playerPage";
 
 export interface LayoutProps {
   name?: string;
 }
+
 export interface LayoutState {
   isOpen: boolean;
 }
@@ -34,6 +29,7 @@ export class AppRouting extends React.Component<LayoutProps, LayoutState> {
     super(props);
     this.toggle = this.toggle.bind(this);
   }
+
   public state: LayoutState = {
     isOpen: false
   };

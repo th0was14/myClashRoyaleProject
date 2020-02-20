@@ -1,6 +1,6 @@
-import { mapperToPlayerInfo, mapperToPlayerChest } from "./mapper";
-import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
-import instance from "../../axiosInstance";
+import { mapperToPlayerChest, mapperToPlayerInfo } from "./mapper";
+import { PlayerChest, PlayerInfo } from "components/PlayerClash.typings";
+import instance from "api/axiosInstance";
 
 const baseUrl = "/api";
 

@@ -1,8 +1,8 @@
-import { PlayerState } from "../app/app.reducers";
-import { chestFetchAction, playerFetchAction } from "./typings";
+import { chestFetchAction, playerFetchAction } from "../typings";
 import { isType } from "typescript-fsa";
 import reduceReducers from "reduce-reducers";
 import { Action } from "redux";
+import { PlayerState } from "store/reducers";
 
 const initialState: PlayerState = {
   playerInfo: {},

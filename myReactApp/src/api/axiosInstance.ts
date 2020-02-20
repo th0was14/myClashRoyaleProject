@@ -1,6 +1,6 @@
 // @ts-ignore
 import axios, { AxiosInstance } from "axios";
-import { API_KEY } from "./constant";
+import { API_KEY } from "api/constant";
 
 const myToken: string = API_KEY;
 

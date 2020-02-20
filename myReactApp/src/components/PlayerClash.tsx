@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, Jumbotron } from "reactstrap";
-import { PlayerInfo, PlayerChest, Card } from "./PlayerClash.typings";
+import { Card, PlayerChest, PlayerInfo } from "./PlayerClash.typings";
 import { map } from "lodash";
 import { CardClash } from "./CardClash";
 import ChestList from "./ChestList";
@@ -12,6 +12,7 @@ export interface PlayerProps {
   errorMessage: string;
   inError: boolean;
 }
+
 export interface PlayerDispatch {
   fetchPlayerInfo: () => void;
   fetchPlayerChest: () => void;
@@ -41,17 +42,22 @@ export class PlayerClash extends React.Component<IPlayer> {
           <div className="row">
             <Jumbotron className="col">
               <h3>
-                <span className="border-bottom border-dark">{`Hello, ${name} ${clanName ? "of clan " + clanName : ""}!`}</span>
+                <span className="border-bottom border-dark">{`Hello, ${name} ${
+                  clanName ? "of clan " + clanName : ""
+                }!`}</span>
               </h3>
               <ChestList title="next chest => " chests={upcomingChests} />
               <ChestList title="rare chest =>" chests={rareChests} />
 
               <div className="row justify-content-between pt-3 flex-wrap">
                 {map(currentDeck, (card: Card) => (
-                    <CardClash key={card.id} icon={card.icon} level={card.level} />
+                  <CardClash
+                    key={card.id}
+                    icon={card.icon}
+                    level={card.level}
+                  />
                 ))}
               </div>
-
             </Jumbotron>
           </div>
         </div>

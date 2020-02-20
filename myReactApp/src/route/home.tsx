@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Jumbotron, Button, Input } from "reactstrap";
-import ListFriend  from "../components/ListFriend";
+import { Button, Input, Jumbotron } from "reactstrap";
+import ListFriend from "../components/ListFriend";
 
 export interface HomeProps {
   id: string;
@@ -47,7 +47,10 @@ export class Home extends React.Component<HomeProps, HomeState> {
   }
 }
 
-const ButtonToNavigate: React.FC<{ playerId: string, history: any }> = ({ playerId, history }) => {
+const ButtonToNavigate: React.FC<{ playerId: string; history: any }> = ({
+  playerId,
+  history
+}) => {
   return (
     <Button
       className="col-4"
