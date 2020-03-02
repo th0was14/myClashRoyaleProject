@@ -6,7 +6,7 @@ import { PlayerState } from "store/reducers";
 
 const initialState: PlayerState = {
   playerInfo: {},
-  playerChest: { upcomingChests: [], rareChests: [] },
+  playerChest: { upcomingChests: [] },
   isFetching: false,
   errorMessage: ""
 };

@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
+const jsonKey = require("./key.json");
+
 module.exports = {
   entry: {
     app: "./src/app.tsx"
@@ -13,7 +15,7 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       "/api": {
-        target: "https://api.royaleapi.com",
+        target: "https://proxy.royaleapi.dev/v1",
         pathRewrite: { "^/api": "" },
         secure: false,
         changeOrigin: true
@@ -22,6 +24,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        use: "json-loader"
+      },
       {
         test: /\.tsx?$/,
         use: "ts-loader",
@@ -41,14 +47,12 @@ module.exports = {
       filename: "./index.html"
     }),
     new webpack.DefinePlugin({
-      API_KEY: JSON.stringify(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI5NCwiaWRlbiI6IjIzMzMyNjE1MTkwMzIxNTYxNiIsIm1kIjp7InVzZXJuYW1lIjoidGgwd2FzIiwiZGlzY3JpbWluYXRvciI6Ijk5MjAiLCJrZXlWZXJzaW9uIjozfSwidHMiOjE1NzY3OTMxMzk5OTR9.hA8BY8YpuCgRNZFGj1jrsRI4ua64PsMzMKekKbDk0ls"
-      )
+      API_KEY: JSON.stringify(jsonKey.key)
     })
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    modules: [path.resolve(__dirname, 'src'), "node_modules"]
+    modules: [path.resolve(__dirname, 'src'), "node_modules"],
   },
   output: {
     filename: "[name].bundle.js",

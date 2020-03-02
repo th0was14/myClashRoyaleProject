@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://api.royaleapi.com/$1" },
+    { "source": "/api/(.*)", "destination": "https://proxy.royaleapi.dev/v1/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

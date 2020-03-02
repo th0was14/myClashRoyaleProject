@@ -1,5 +1,5 @@
-import { mapperToPlayerChest, mapperToPlayerInfo } from "./mapper";
-import { PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
+import { mapperToPlayerInfo, mapperToPlayerChest } from "./mapper";
+import { PlayerInfo, PlayerChest } from "components/PlayerClash/PlayerClash.typings";
 import instance from "api/axiosInstance";
 
 const baseUrl = "/api";
@@ -22,13 +22,8 @@ const fetch = <T>(url: string): Promise<T> => {
     });
 };
 
-export const fetchPlayerInfo = (
-  type: string,
-  id: string
-): Promise<PlayerInfo> => fetchByTypeById(type, id).then(mapperToPlayerInfo);
+export const fetchPlayerInfo = (type: string, id: string): Promise<PlayerInfo> =>
+  fetchByTypeById(type, id).then(mapperToPlayerInfo);
 
-export const fetchPlayerChest = (
-  type: string,
-  id: string
-): Promise<PlayerChest> =>
-  fetch(`${type}/${id}/chests`).then(mapperToPlayerChest);
+export const fetchPlayerChest = (type: string, id: string): Promise<PlayerChest> =>
+  fetch(`${type}/${id}/upcomingchests`).then(mapperToPlayerChest);

@@ -1,6 +1,6 @@
 import { PlayerChestDto, PlayerInfoDto } from "./typings";
 import { PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
-import { get, keys, map, omit, orderBy, toLower } from "lodash";
+import { get, map } from "lodash";
 
 export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
   return {
@@ -8,9 +8,9 @@ export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
     name: dto.name,
     trophies: dto.trophies,
     clanName: get(dto.clan, "name"),
-    currentDeck: dto.currentDeck.map(({ icon, displayLevel }, index) => ({
-      icon,
-      level: displayLevel,
+    currentDeck: map(dto.currentDeck, ({ iconUrls, level }, index) => ({
+      icon: iconUrls.medium,
+      level,
       id: index + 1
     }))
   };
@@ -18,23 +18,24 @@ export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
 
 export const mapperToPlayerChest = (dto: PlayerChestDto): PlayerChest => {
   return {
-    upcomingChests: dto.upcoming.map((chestName, index) => ({
-      name: chestName,
-      src: getChestSrc(chestName),
-      position: index + 1
+    upcomingChests: map(dto.items, (chest) => ({
+      name: chest.name,
+      src: getChestSrc(chest.name),
+      position: chest.index + 1,
     })),
-    rareChests: orderBy(
-      map(keys(omit(dto, "upcoming")), key => ({
-        name: key,
-        src: getChestSrc(toLower(key)),
-        position: dto[key] + 1
-      })),
-      ({ position }) => position
-    )
   };
 };
 
-const getChestSrc = (chestName: string) =>
-  `https://royaleapi.github.io/cr-api-assets/chests/chest-${
-    chestName === "golden" ? "gold" : chestName
-  }.png`;
+const getChestSrc = (chestName: string): string => {
+  const url = "https://royaleapi.github.io/cr-api-assets/chests/";
+  switch (chestName) {
+    case "Silver Chest": return `${url}chest-silver.png`;
+    case "Golden Chest": return `${url}chest-gold.png`;
+    case "Magical Chest": return `${url}chest-magical.png`;
+    case "Giant Chest": return `${url}chest-giant.png`;
+    case "Mega Lightning Chest": return `${url}chest-megalightning.png`;
+    case "Legendary Chest": return `${url}chest-legendary.png`;
+    case "Epic Chest": return `${url}chest-epic.png`;
+    default: return "";
+  }
+};

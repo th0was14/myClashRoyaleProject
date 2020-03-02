@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import {
-  PlayerClash,
-  PlayerDispatch,
-  PlayerProps
-} from "components/PlayerClash/PlayerClash";
+import { PlayerClash, PlayerDispatch, PlayerProps } from "components/PlayerClash/PlayerClash";
 import { chestFetchAction, playerFetchAction } from "./typings";
 import { RoyalState } from "store/reducers";
 
@@ -23,12 +19,9 @@ const mapStateToProps = (state: RoyalState): PlayerProps => {
   };
 };
 
-const mapDispatchToProps = (
-  dispatch: Dispatch,
-  { playerId }: PlayerContainerProps
-): PlayerDispatch => ({
-  fetchPlayerInfo: () => dispatch(playerFetchAction.started(playerId)),
-  fetchPlayerChest: () => dispatch(chestFetchAction.started(playerId))
+const mapDispatchToProps = (dispatch: Dispatch, { playerId }: PlayerContainerProps): PlayerDispatch => ({
+  fetchPlayerInfo: () => dispatch(playerFetchAction.started(encodeURIComponent(`#${playerId}`))),
+  fetchPlayerChest: () => dispatch(chestFetchAction.started(encodeURIComponent(`#${playerId}`)))
 });
 
 export default connect<PlayerProps, PlayerDispatch, PlayerContainerProps>(

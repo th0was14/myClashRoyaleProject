@@ -20,5 +20,5 @@ export interface Chest {
 
 export interface PlayerChest {
   upcomingChests: Chest[];
-  rareChests: Chest[];
+  // rareChests: Chest[];
 }

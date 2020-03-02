@@ -70,6 +70,7 @@ export interface CurrentDeckDto {
   requiredForUpgrade: number;
   leftToUpgrade: number;
   icon: string;
+  iconUrls: {medium: string};
   key: string;
   elixir: number;
   type: string;
@@ -118,12 +119,11 @@ export interface PlayerInfoDto {
   achievements?: AchievementDto[];
 }
 
+export interface ChestDto {
+  index: number;
+  name: string;
+}
+
 export interface PlayerChestDto {
-  upcoming: string[];
-  superMagical: number;
-  magical: number;
-  legendary: number;
-  epic: number;
-  giant: number;
-  megaLightning: number;
+  items: ChestDto[];
 }

@@ -30,7 +30,7 @@ export class PlayerClash extends React.Component<IPlayer> {
 
   render() {
     const { name, clanName, currentDeck } = this.props.playerInfo;
-    const { upcomingChests, rareChests } = this.props.playerChest;
+    const { upcomingChests } = this.props.playerChest;
     let element: JSX.Element;
     if (this.props.isFetching) {
       element = <span>Loading ...</span>;
@@ -47,7 +47,6 @@ export class PlayerClash extends React.Component<IPlayer> {
                 }!`}</span>
               </h3>
               <ChestList title="next chest => " chests={upcomingChests} />
-              <ChestList title="rare chest =>" chests={rareChests} />
 
               <div className="row justify-content-between pt-3 flex-wrap">
                 {map(currentDeck, (card: Card) => (
