@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 export const Input = ({ label, text, type, id, value, handleChange }) => (
   <div className="form-group">
@@ -14,14 +13,3 @@ export const Input = ({ label, text, type, id, value, handleChange }) => (
     />
   </div>
 );
-
-// Input.propTypes = {
-//   label: PropTypes.string.isRequired,
-//   text: PropTypes.string.isRequired,
-//   type: PropTypes.string.isRequired,
-//   id: PropTypes.string.isRequired,
-//   value: PropTypes.string.isRequired,
-//   handleChange: PropTypes.func.isRequired
-// };
-
-// export default Input;

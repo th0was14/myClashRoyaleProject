@@ -1,15 +1,17 @@
 import { actionCreatorFactory } from "typescript-fsa";
-import { PlayerChest, PlayerInfo } from "../../components/PlayerClash.typings";
+import { PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
 
-const actionCreator = actionCreatorFactory();
+const actionPlayerCreator = actionCreatorFactory("PLAYER");
+const actionChestCreator = actionCreatorFactory("CHEST");
 
-export const playerFetchAction = actionCreator.async<
+export const playerFetchAction = actionPlayerCreator.async<
   string,
   PlayerInfo,
   string
->("PLAYER_FETCH");
-export const chestFetchAction = actionCreator.async<
+>("FETCH");
+
+export const chestFetchAction = actionChestCreator.async<
   string,
   PlayerChest,
   string
->("CHEST_FETCH");
+>("FETCH");

@@ -1,7 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
+
+const jsonKey = require("./key.json");
 
 module.exports = {
   entry: {
@@ -9,13 +11,23 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    // host: "10.0.0.3",
-    // contentBase: "./",
     open: "Chrome",
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      "/api": {
+        target: "https://proxy.royaleapi.dev/v1",
+        pathRewrite: { "^/api": "" },
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        use: "json-loader"
+      },
       {
         test: /\.tsx?$/,
         use: "ts-loader",
@@ -28,24 +40,22 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ["dist"] }),
     new HtmlWebpackPlugin({
       title: "Development",
       template: "./src/index.html",
       filename: "./index.html"
     }),
     new webpack.DefinePlugin({
-      API_KEY: JSON.stringify(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI5NCwiaWRlbiI6IjIzMzMyNjE1MTkwMzIxNTYxNiIsIm1kIjp7fSwidHMiOjE1NDgzNTMxNDkyODZ9.MkQCF_kgr7P2ntlj2RNfmpMbJR_9K8kl600WHIOg9do"
-      )
+      API_KEY: JSON.stringify(jsonKey.key)
     })
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    modules: [path.join(__dirname, "js/helpers"), "node_modules"],
+    modules: [path.resolve(__dirname, 'src'), "node_modules"],
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "public")
   }
 };

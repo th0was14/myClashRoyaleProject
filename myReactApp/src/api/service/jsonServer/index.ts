@@ -1,4 +1,4 @@
-const apiUrl = "http://10.0.0.3:3004";
+const apiUrl = "http://localhost:3004";
 
 export const postComment = (body: string, postId: number) =>
   fetch(`${apiUrl}/comments/`, {

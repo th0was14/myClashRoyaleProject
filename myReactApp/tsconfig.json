@@ -4,12 +4,13 @@
     "noImplicitAny": false,
     "sourceMap": true,
     "module": "es2015",
-    "target": "es2017",
+    "target": "es6",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src"
-
+    "baseUrl": "./src",
+    "lib": ["dom", "es2015"],
+    "esModuleInterop": true
   }
 }

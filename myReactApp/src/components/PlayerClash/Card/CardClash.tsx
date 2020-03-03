@@ -1,13 +1,14 @@
 import * as React from "react";
+import { Badge } from "reactstrap";
 
 export interface Props {
   level: number;
   icon: string;
 }
 
-export const CardClash: React.FunctionComponent<Props> = ({ level, icon }) => (
+export const CardClash: React.FC<Props> = ({ level, icon }) => (
   <div>
-    <span>{level}</span>
+    <Badge color="secondary">{level}</Badge>
     <img src={icon} height="65" />
   </div>
 );

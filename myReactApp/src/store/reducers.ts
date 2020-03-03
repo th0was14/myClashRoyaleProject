@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { PlayerInfo, PlayerChest } from "../../components/PlayerClash.typings";
-import { royalReducers } from "../player/player.reducers";
+import { PlayerChest, PlayerInfo } from "components/PlayerClash/PlayerClash.typings";
+import { royalReducers } from "containers/player/reducer/player.reducers";
 
 export interface PlayerState {
   playerInfo: PlayerInfo;
