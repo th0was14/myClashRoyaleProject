@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd ./myReactApp && yarn run build"
+    "build": "cd ./myReactApp && yarn run build",
+    "start:web": "cd ./packages/myReactApp && yarn run start",
+    "start:mobile": "cd ./packages/myReactNativeApp && yarn run start",
+    "start:api": "cd ./packages/myApi && yarn run dev"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/th0was14/myClashRoyaleProject/issues"
   },
-  "homepage": "https://github.com/th0was14/myClashRoyaleProject#readme"
+  "homepage": "https://github.com/th0was14/myClashRoyaleProject#readme",
+  "private": true,
+  "workspaces": [
+    "packages/myReactApp",
+    "packages/myReactNativeApp",
+    "packages/myApi"
+  ]
 }
