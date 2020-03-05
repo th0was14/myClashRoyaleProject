@@ -33,6 +33,7 @@ const PlayerSelector: React.FC<Props> = ({ match }) => {
       {isFetching && <span>Loading ...</span>}
       {displayContent && (
         <PlayerClash
+          name={playerInfo.name}
           clanName={playerInfo.clanName}
           currentDeck={playerInfo.currentDeck}
           upcomingChests={playerChest.upcomingChests}
