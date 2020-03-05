@@ -8,9 +8,9 @@ export const mapperToPlayerInfo = (dto: PlayerInfoDto): PlayerInfo => {
     name: dto.name,
     trophies: dto.trophies,
     clanName: get(dto.clan, "name"),
-    currentDeck: map(dto.currentDeck, ({ iconUrls, level }, index) => ({
+    currentDeck: map(dto.currentDeck, ({ iconUrls, level, maxLevel }, index) => ({
       icon: iconUrls.medium,
-      level,
+      level: level - maxLevel + 13,
       id: index + 1
     }))
   };

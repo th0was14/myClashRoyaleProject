@@ -20,7 +20,7 @@ export const fetchByTypeAndId = (type: string, id?: number) => {
 
 export const fetchFriends = (): Promise<{ friends: ClashFriend[] }> =>
   instance
-    .get("http://localhost:3001/api/friend")
+    .get("api/friend")
     .then(response => response.data)
     .catch(e => {
       throw e;
