@@ -2,7 +2,7 @@ import { mapperToPlayerInfo, mapperToPlayerChest } from "./mapper";
 import { PlayerInfo, PlayerChest } from "components/PlayerClash/PlayerClash.typings";
 import instance from "api/axiosInstance";
 
-const baseUrl = "/api";
+const baseUrl = "/apiRoyal";
 
 const fetchByTypeById = <T>(type: string, id: string): Promise<T> => {
   const fetchCall = instance.get(`${baseUrl}/${type}/${id}`);

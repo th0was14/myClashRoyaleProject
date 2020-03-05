@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd ./myReactApp && yarn run build",
+    "build": "cd ./packages/myReactApp && yarn run build -- --output-path ../../public",
     "start:web": "cd ./packages/myReactApp && yarn run start",
     "start:mobile": "cd ./packages/myReactNativeApp && yarn run start",
     "start:api": "cd ./packages/myApi && yarn run dev"
