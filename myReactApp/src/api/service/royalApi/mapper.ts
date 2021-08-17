@@ -36,6 +36,7 @@ const getChestSrc = (chestName: string): string => {
     case "Mega Lightning Chest": return `${url}chest-megalightning.png`;
     case "Legendary Chest": return `${url}chest-legendary.png`;
     case "Epic Chest": return `${url}chest-epic.png`;
+    case "Plentiful Gold Crate": return `${url}chest-plentifulgoldcrate.png`;
     default: return "";
   }
 };
