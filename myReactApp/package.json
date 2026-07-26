@@ -43,7 +43,7 @@
     "typescript-fsa": "^3.0.0",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "5.2.6"
   },
   "dependencies": {
     "@types/react-redux": "^7.1.7",
